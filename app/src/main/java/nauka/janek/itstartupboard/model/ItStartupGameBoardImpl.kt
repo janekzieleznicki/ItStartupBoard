@@ -2,13 +2,16 @@ package nauka.janek.itstartupboard.model
 
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
+import kotlin.math.pow
 
 class ItStartupGameBoardImpl() : ItStartupGameBoard{
     override var gameStartPoints: Int = 0
 
-    override var gameProjectPOints: Int = 0
+    override var gameProjectPoints: Int = 0
+
     override val minStartPoints: Int = 1
     override val maxStartPoints: Int = 6
+
     override fun addPlayer(player: Player) {
         playerList.add(player)
         playerListSubject.onNext(playerList)
@@ -31,8 +34,5 @@ class ItStartupGameBoardImpl() : ItStartupGameBoard{
 
     override fun numberOfPlayers(): Int = playerList.size
 
-    override fun projectPointsList(): List<Int> {
-        return emptyList()
-    }
-
+    override fun projectPointsList(): List<Int> = (5..8).toList().map { 2.0.pow(it.toDouble()).toInt() }
 }

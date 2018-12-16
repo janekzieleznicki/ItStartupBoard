@@ -6,6 +6,10 @@ import nauka.janek.itstartupboard.view.game_settings.GameSettingsView
 
 interface PlayerListEditPresenter {
 
+    val startPointsList: Array<String>
+
+    val projectPointsList: Array<String>
+
     fun deletePlayer(player: Player)
 
     fun addPlayer(playerName: String)
@@ -16,12 +20,11 @@ interface PlayerListEditPresenter {
 
     fun detachView()
 
-    fun startPointsList(): Array<String>
-
     fun startPointsItemSelected(position: Int)
 //    fun
     fun startPointsChanges(): Observable<Int>
 
     fun projectPointsChanges(): Observable<Int>
+
     fun projectPointsItemSelected(position: Int)
 }

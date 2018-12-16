@@ -11,12 +11,13 @@ import kotlin.random.Random
 class PlayerListEditPresenterImpl(
     private val itStartupGameBoard: ItStartupGameBoard
 ) : PlayerListEditPresenter {
+    override val startPointsList = (itStartupGameBoard.minStartPoints..itStartupGameBoard.maxStartPoints).map { it.toString() }.toTypedArray()
 
-    private val startPointsList = (itStartupGameBoard.minStartPoints..itStartupGameBoard.maxStartPoints).map { it.toString() }.toTypedArray()
+    override val projectPointsList = itStartupGameBoard.projectPointsList().map { it.toString() }.toTypedArray()
 
     private var gameSettingsView: GameSettingsView? = null
 
-    override fun startPointsList(): Array<String> = startPointsList
+//    override fun startPointsList(): Array<String> = startPointsList
 
     override fun startPointsItemSelected(position: Int) {
         if (position >= startPointsList.size)
@@ -27,15 +28,19 @@ class PlayerListEditPresenterImpl(
     }
 
     override fun projectPointsItemSelected(position: Int){
-
+        if (position >= projectPointsList.size)
+            itStartupGameBoard.gameProjectPoints = projectPointsList[Random.nextInt(0, projectPointsList.size)].toInt()
+        else
+            itStartupGameBoard.gameProjectPoints = projectPointsList[position].toInt()
+        projectPointsSubject.onNext(itStartupGameBoard.gameProjectPoints)
     }
 
     private val startPointsSubject = BehaviorSubject.create<Int>()
+
     private val projectPointsSubject= BehaviorSubject.create<Int>()
-
     override fun startPointsChanges() : Observable<Int> = startPointsSubject
-    override fun projectPointsChanges() : Observable<Int> = projectPointsSubject
 
+    override fun projectPointsChanges() : Observable<Int> = projectPointsSubject
     override fun getNextPlayerIndex(): Int = itStartupGameBoard.numberOfPlayers()+1
 
     override fun detachView() {

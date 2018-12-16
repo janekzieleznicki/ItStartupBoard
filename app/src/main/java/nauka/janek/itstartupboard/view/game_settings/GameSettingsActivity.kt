@@ -28,14 +28,44 @@ class GameSettingsActivity : AppCompatActivity(), GameSettingsView {
         GameBoardApplication.graph.inject(this)
         playerListEditPresenter.attachView(this)
 
-        val startPointsOptions = playerListEditPresenter.startPointsList().toMutableList()
+        setUpStartPointsSpinner()
+
+        val projectPointsOPtions = playerListEditPresenter.projectPointsList.toMutableList()
+        projectPointsOPtions.add("Random")
+        projectPointsSpinner.adapter =
+                ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, projectPointsOPtions)
+        playerListEditPresenter.projectPointsChanges().observeOn(AndroidSchedulers.mainThread()).subscribe {
+            projectPointsSpinner.setSelection(projectPointsOPtions.indexOf(it.toString()))
+        }
+
+        projectPointsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                playerListEditPresenter.projectPointsItemSelected(projectPointsOPtions.size)
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                playerListEditPresenter.projectPointsItemSelected(position)
+            }
+        }
+
+
+        playerRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        floatingActionButton.setOnClickListener{
+            AddPlayerDialogImpl(this).showDialog()
+        }
+    }
+
+    private fun setUpStartPointsSpinner() {
+        val startPointsOptions = playerListEditPresenter.startPointsList.toMutableList()
         startPointsOptions.add("Random")
-        startPointsSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, startPointsOptions)
-        playerListEditPresenter.startPointsChanges().observeOn(AndroidSchedulers.mainThread()).subscribe{
+        startPointsSpinner.adapter =
+                ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, startPointsOptions)
+        playerListEditPresenter.startPointsChanges().observeOn(AndroidSchedulers.mainThread()).subscribe {
             startPointsSpinner.setSelection(startPointsOptions.indexOf(it.toString()))
         }
 
-        startPointsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        startPointsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 playerListEditPresenter.startPointsItemSelected(startPointsOptions.size)
             }
@@ -43,14 +73,6 @@ class GameSettingsActivity : AppCompatActivity(), GameSettingsView {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 playerListEditPresenter.startPointsItemSelected(position)
             }
-        }
-
-
-
-        playerRecyclerView.layoutManager = LinearLayoutManager(this)
-
-        floatingActionButton.setOnClickListener{
-            AddPlayerDialogImpl(this).showDialog()
         }
     }
 }

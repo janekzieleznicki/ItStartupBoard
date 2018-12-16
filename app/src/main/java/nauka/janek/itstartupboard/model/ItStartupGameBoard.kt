@@ -7,7 +7,7 @@ interface ItStartupGameBoard {
 
     var gameStartPoints: Int
 
-    var gameProjectPOints: Int
+    var gameProjectPoints: Int
 
     val minStartPoints: Int
 //        get() = 1
