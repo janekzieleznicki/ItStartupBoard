@@ -49,6 +49,9 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger:$dagger_version"
 
+    //TableView
+    implementation "com.evrencoskun.library:tableview:$tableViewVersion"
+
     // (Required) Writing and executing Unit Tests on the JUnit Platform
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")

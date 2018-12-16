@@ -4,6 +4,7 @@ import io.reactivex.Observable
 import java.util.*
 
 interface ItStartupGameBoard {
+    var useGoodPlanningLogic: Boolean
 
     var gameStartPoints: Int
 

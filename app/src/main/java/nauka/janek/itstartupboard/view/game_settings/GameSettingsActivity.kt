@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import com.jakewharton.rxbinding2.widget.checkedChanges
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import kotlinx.android.synthetic.main.activity_player_list_edit.*
+import kotlinx.android.synthetic.main.activity_game_settings.*
 import nauka.janek.itstartupboard.GameBoardApplication
 import nauka.janek.itstartupboard.R
 import nauka.janek.itstartupboard.model.Player
@@ -30,7 +30,7 @@ class GameSettingsActivity : AppCompatActivity(), GameSettingsView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_player_list_edit)
+        setContentView(R.layout.activity_game_settings)
         GameBoardApplication.graph.inject(this)
         gameSettingsPresenter.attachView(this)
 

@@ -5,6 +5,9 @@ import io.reactivex.subjects.BehaviorSubject
 import kotlin.math.pow
 
 class ItStartupGameBoardImpl() : ItStartupGameBoard{
+    override var useGoodPlanningLogic: Boolean
+        get() = false
+        set(value) {}
     override var gameStartPoints: Int = 0
 
     override var gameProjectPoints: Int = 0

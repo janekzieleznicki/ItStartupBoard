@@ -52,18 +52,18 @@ class GameSettingsPresenterImpl(
         bindView()
     }
 
-    override fun deletePlayer(player: Player) {
-        itStartupGameBoard.deletePlayer(player)
-    }
+    override fun deletePlayer(player: Player) = itStartupGameBoard.deletePlayer(player)
 
-    override fun addPlayer(playerName: String) {
-        itStartupGameBoard.addPlayer(Player(playerName))
-    }
+
+    override fun addPlayer(playerName: String) = itStartupGameBoard.addPlayer(Player(playerName))
 
     fun bindView(){
         itStartupGameBoard.playerListChanges().observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                    gameSettingsView?.showPlayerList(it)
+                    gameSettingsView!!.showPlayerList(it)
             }
+        gameSettingsView!!.useGoodPlannigChanges().subscribe{
+            itStartupGameBoard.useGoodPlanningLogic = it
+        }
     }
 }

@@ -21,7 +21,7 @@ interface GameSettingsPresenter {
     fun detachView()
 
     fun startPointsItemSelected(position: Int)
-//    fun
+
     fun startPointsChanges(): Observable<Int>
 
     fun projectPointsChanges(): Observable<Int>
