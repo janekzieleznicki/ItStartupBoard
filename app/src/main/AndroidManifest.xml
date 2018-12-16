@@ -10,14 +10,22 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".view.ScoreBoardActivity">
+        <activity android:name=".view.scoreboard.ScoreBoardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".view.PlayerListEditActivity">
+        <activity android:name=".view.game_settings.GameSettingsActivity">
+        </activity>
+        <activity
+                android:name=".view.GameSettingsActivity"
+                android:label="@string/title_activity_game_settings"
+                android:parentActivityName=".view.scoreboard.ScoreBoardActivity">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="nauka.janek.itstartupboard.view.scoreboard.ScoreBoardActivity"/>
         </activity>
     </application>
 

@@ -1,4 +1,4 @@
-package nauka.janek.itstartupboard.view
+package nauka.janek.itstartupboard.view.scoreboard
 
 import io.reactivex.Observable
 import nauka.janek.itstartupboard.model.Player

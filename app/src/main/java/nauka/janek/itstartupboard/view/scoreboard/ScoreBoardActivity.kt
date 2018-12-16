@@ -1,4 +1,4 @@
-package nauka.janek.itstartupboard.view
+package nauka.janek.itstartupboard.view.scoreboard
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -8,6 +8,7 @@ import nauka.janek.itstartupboard.GameBoardApplication
 import nauka.janek.itstartupboard.R
 import nauka.janek.itstartupboard.model.Player
 import nauka.janek.itstartupboard.presenter.ScoreBoardPresenter
+import nauka.janek.itstartupboard.view.game_settings.GameSettingsActivity
 import javax.inject.Inject
 
 class ScoreBoardActivity : AppCompatActivity(), ScoreBoardView {
@@ -26,6 +27,7 @@ class ScoreBoardActivity : AppCompatActivity(), ScoreBoardView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_score_board)
         GameBoardApplication.graph.inject(this)
-        startActivity(Intent(this, PlayerListEditActivity::class.java))
+        startActivity(Intent(this, GameSettingsActivity::class.java))
+        scoreBoardPresenter.attachView(this)
     }
 }
