@@ -7,12 +7,12 @@ import kotlinx.android.synthetic.main.add_player_dialog_layout.view.*
 import nauka.janek.itstartupboard.GameBoardApplication
 import nauka.janek.itstartupboard.R
 import nauka.janek.itstartupboard.model.Player
-import nauka.janek.itstartupboard.presenter.PlayerListEditPresenter
+import nauka.janek.itstartupboard.presenter.GameSettingsPresenter
 import javax.inject.Inject
 
 class AddPlayerDialogImpl(private val context: Activity): AddPlayerDialog {
     @Inject
-    lateinit var playerListEditPresenter: PlayerListEditPresenter
+    lateinit var gameSettingsPresenter: GameSettingsPresenter
 
     init {
         GameBoardApplication.graph.inject(this)
@@ -21,13 +21,13 @@ class AddPlayerDialogImpl(private val context: Activity): AddPlayerDialog {
     override fun showDialog() {
         val builder = AlertDialog.Builder(context)
         val view = context.layoutInflater.inflate(R.layout.add_player_dialog_layout,null)
-        view.editText.setText( "Player ${playerListEditPresenter.getNextPlayerIndex()}")
+        view.editText.setText( "Player ${gameSettingsPresenter.getNextPlayerIndex()}")
         builder.setView(view)
             .setTitle("New player")
             .setMessage("Enter name")
             .setPositiveButton(android.R.string.ok
             ) { dialog, which ->
-                playerListEditPresenter.addPlayer(view.editText.text.toString())
+                gameSettingsPresenter.addPlayer(view.editText.text.toString())
             }
             .setNegativeButton(android.R.string.no
             ) { dialog, which ->

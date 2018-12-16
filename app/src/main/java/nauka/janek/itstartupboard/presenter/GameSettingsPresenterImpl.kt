@@ -8,9 +8,9 @@ import nauka.janek.itstartupboard.model.Player
 import nauka.janek.itstartupboard.view.game_settings.GameSettingsView
 import kotlin.random.Random
 
-class PlayerListEditPresenterImpl(
+class GameSettingsPresenterImpl(
     private val itStartupGameBoard: ItStartupGameBoard
-) : PlayerListEditPresenter {
+) : GameSettingsPresenter {
     override val startPointsList = (itStartupGameBoard.minStartPoints..itStartupGameBoard.maxStartPoints).map { it.toString() }.toTypedArray()
 
     override val projectPointsList = itStartupGameBoard.projectPointsList().map { it.toString() }.toTypedArray()

@@ -10,7 +10,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/playerRecyclerView"
         android:layout_width="0dp"
-        android:layout_height="403dp"
+        android:layout_height="334dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -31,7 +31,7 @@
 
         <TextView
             android:id="@+id/projectPointTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="172dp"
             android:layout_height="wrap_content"
             android:text="@string/projectPointsTitleString"
             app:layout_constraintBottom_toTopOf="@+id/startPointsTitle"
@@ -40,28 +40,39 @@
 
         <Spinner
             android:id="@+id/projectPointsSpinner"
-            android:layout_width="wrap_content"
+            android:layout_width="172dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/startPointsSpinner"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/projectPointTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/projectPointTitle" />
 
         <Spinner
             android:id="@+id/startPointsSpinner"
-            android:layout_width="wrap_content"
+            android:layout_width="172dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/startPointsTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/projectPointsSpinner" />
+            app:layout_constraintTop_toTopOf="@+id/startPointsTitle" />
 
         <TextView
             android:id="@+id/startPointsTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="172dp"
             android:layout_height="wrap_content"
             android:text="@string/startPointsTitleString"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/projectPointTitle" />
+
+        <Switch
+            android:id="@+id/useGoodPlanningSwitch"
+            android:layout_width="352dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Switch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/startPointsSpinner" />
     </android.support.constraint.ConstraintLayout>
     <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"

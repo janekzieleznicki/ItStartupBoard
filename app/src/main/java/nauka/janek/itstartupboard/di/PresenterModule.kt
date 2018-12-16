@@ -3,8 +3,8 @@ package nauka.janek.itstartupboard.di
 import dagger.Module
 import dagger.Provides
 import nauka.janek.itstartupboard.model.ItStartupGameBoard
-import nauka.janek.itstartupboard.presenter.PlayerListEditPresenter
-import nauka.janek.itstartupboard.presenter.PlayerListEditPresenterImpl
+import nauka.janek.itstartupboard.presenter.GameSettingsPresenter
+import nauka.janek.itstartupboard.presenter.GameSettingsPresenterImpl
 import nauka.janek.itstartupboard.presenter.ScoreBoardPresenter
 import nauka.janek.itstartupboard.presenter.ScoreBoardPresenterImpl
 import javax.inject.Singleton
@@ -18,5 +18,5 @@ class PresenterModule {
 
     @Singleton
     @Provides
-    fun playerListEditPresenter(itStartupGameBoard: ItStartupGameBoard): PlayerListEditPresenter = PlayerListEditPresenterImpl(itStartupGameBoard)
+    fun playerListEditPresenter(itStartupGameBoard: ItStartupGameBoard): GameSettingsPresenter = GameSettingsPresenterImpl(itStartupGameBoard)
 }
