@@ -27,7 +27,7 @@ class ScoreBoardActivity : AppCompatActivity(), ScoreBoardView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_score_board)
         GameBoardApplication.graph.inject(this)
-        startActivity(Intent(this, GameSettingsActivity::class.java))
+//        startActivity(Intent(this, GameSettingsActivity::class.java))
         scoreBoardPresenter.attachView(this)
     }
 }
